@@ -608,7 +608,7 @@ let C={};
 /* ---------- v2: flexible species & colours ---------- */
 const furs=p=>(p&&p.furs&&p.furs.length?p.furs:p&&p.fur?[p.fur]:[]).filter(k=>FURNAME[k]);
 const clip=t=>String(t||'').replace(/[<>&"']/g,'').trim();
-function spName(p){return p.sp==='other'?(clip(p.spx)||'สัตว์'):(spName(p)||clip(p.spx)||'สัตว์')}
+function spName(p){return p.sp==='other'?(clip(p.spx)||'สัตว์'):(SP[p['sp']]||clip(p.spx)||'สัตว์')}
 function furText(p){const a=furs(p).map(k=>FURNAME[k]).join(' ');return [a,clip(p.furx)].filter(Boolean).join(' · ')||'ไม่ระบุ'}
 const FURBG={calico:'conic-gradient(#f3f2ec 0 40%,#e8913a 0 70%,#2d2d36 0)',tortie:'conic-gradient(#2d2d36 0 55%,#c8682a 0 80%,#2d2d36 0)',tabby:'repeating-linear-gradient(135deg,#a89a80 0 4px,#4d463c 4px 7px)',bw:'linear-gradient(90deg,#f3f2ec 50%,#2d2d36 50%)',point:'radial-gradient(circle at 50% 75%,#5a4232 0 32%,#eadfcb 34%)',spot:'radial-gradient(circle at 30% 35%,#2d2d36 0 15%,transparent 17%),radial-gradient(circle at 68% 64%,#8a5a35 0 17%,transparent 19%),#f3f2ec'};
 const furBg=k=>FURBG[k]||FUR[k];
